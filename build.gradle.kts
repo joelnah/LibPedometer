@@ -2,14 +2,13 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("maven-publish")
 }
 
 android {
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
     namespace = "na.family.prayer.pedometer"
     defaultConfig {
-        minSdk = 29
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -23,12 +22,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVer.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.javaVer.get())
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = libs.versions.javaVer.get()
     }
 }
 
@@ -41,6 +40,7 @@ dependencies {
     androidTestImplementation (libs.androidx.espresso.core)
     implementation (libs.androidx.ui)
 
+    implementation (libs.permissions)
     debugImplementation(libs.nahutils)
     implementation (libs.gson)
 }
