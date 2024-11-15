@@ -1,1 +1,5 @@
-# LibPedometer-
+# LibPedometer
+
+개인용 걸음 수 측정 라이브러리입니다.
+혹시 필요한 분이 계실까 하여 모듈만 공개합니다.
+Compose용으로 개발되었습니다.
